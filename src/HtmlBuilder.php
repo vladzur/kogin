@@ -8,6 +8,7 @@
 namespace Vladzur\Kogin;
 
 
-class HtmlBuilder {
+class HtmlBuilder
+{
 
 }
