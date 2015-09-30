@@ -1,0 +1,19 @@
+{
+  "name": "vladzur/kogin",
+  "description": "Html and Form Builder",
+  "authors": [
+    {
+      "name": "vladzur",
+      "email": "vladzur@gmail.com"
+    }
+  ],
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": "^4.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Vladzur\\Kogin\\": "src/"
+    }
+  }
+}
