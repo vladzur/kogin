@@ -14,9 +14,9 @@ echo $form->open(['action' => 'demo.php']);
 echo $form->text('nombre_completo');
 echo $form->email('email');
 echo $form->password('password');
-echo $form->checkbox('recibir_alertas');
-echo $form->button('Guardar');
+echo $form->select('estado', [1 => "Creado", 2 => "Revisado", 3 => "cerrado"]);
 echo $form->close();
+echo $form->button('Guardar');
 ?>
 </body>
 

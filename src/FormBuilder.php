@@ -33,7 +33,7 @@ class FormBuilder
         $default = [
             'type' => $type,
             'name' => $name,
-            'id' => "input_{$name}",
+            'id' => $name,
             'placeholder' => $this->upperCaseName($name),
             'class' => 'form-control'
         ];
@@ -61,7 +61,8 @@ class FormBuilder
         $default = [
             'name' => $name,
             'rows' => 3,
-            'cols' => 50
+            'cols' => 50,
+            'id' => $name
         ];
         $options = $this->mergeOptions($default, $params);
         return "<textarea {$options}>{$text}</textarea>";
@@ -83,6 +84,21 @@ class FormBuilder
             $text = $this->upperCaseName($name);
         }
         return $out . $text;
+    }
+
+    public function select($name, $items, $params = [])
+    {
+        $default = [
+            'name' => $name,
+            'id' => $name
+        ];
+        $options = $this->mergeOptions($default, $params);
+        $out = "<select {$options}>";
+        foreach ($items as $key => $value) {
+            $out .= "<option value=\"{$key}\">{$value}</option>";
+        }
+        $out .= "</select>";
+        return $out;
     }
 
     protected function mergeOptions($default, $params)
