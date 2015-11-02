@@ -86,4 +86,12 @@ class FormBuilderTest extends PHPUnit_Framework_TestCase
             $output);
     }
 
+    public function testCheckbox()
+    {
+        $f = new FormBuilder();
+        $output = $f->checkbox('remember_me');
+        $this->assertEquals('<div class="checkbox"><label><input type="checkbox" name="remember_me" id="remember_me">Remember Me</label></div>',
+            $output);
+    }
+
 }
