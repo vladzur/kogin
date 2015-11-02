@@ -28,44 +28,47 @@ class FormBuilderTest extends PHPUnit_Framework_TestCase
     {
         $f = new FormBuilder();
         $text = $f->input('text', 'username');
-        $this->assertEquals('<input type="text" name="username" placeholder="Username">', $text);
-        $password = $f->input('password', 'secret');
-        $this->assertEquals('<input type="password" name="secret" placeholder="Secret">', $password);
+        $this->assertEquals('<div class="form-group"><input type="text" name="username" id="username" placeholder="Username" class="form-control"></div>',
+            $text);
     }
 
     public function testInputWithParams()
     {
         $f = new FormBuilder();
         $output = $f->input('text', 'username', ['placeholder' => 'User Name']);
-        $this->assertEquals('<input type="text" name="username" placeholder="User Name">', $output);
+        $this->assertEquals('<div class="form-group"><input type="text" name="username" id="username" placeholder="User Name" class="form-control"></div>',
+            $output);
     }
 
     public function testInputTextDefault()
     {
         $f = new FormBuilder();
         $output = $f->text('class_name');
-        $this->assertEquals('<input type="text" name="class_name" placeholder="Class Name">', $output);
+        $this->assertEquals('<div class="form-group"><input type="text" name="class_name" id="class_name" placeholder="Class Name" class="form-control"></div>',
+            $output);
     }
 
     public function testInputPasswordDefault()
     {
         $f = new FormBuilder();
         $output = $f->password('secret');
-        $this->assertEquals('<input type="password" name="secret" placeholder="Secret">', $output);
+        $this->assertEquals('<div class="form-group"><input type="password" name="secret" id="secret" placeholder="Secret" class="form-control"></div>',
+            $output);
     }
 
     public function testTextArea()
     {
         $f = new FormBuilder();
         $output = $f->textarea('details', 'lorem ipsum');
-        $this->assertEquals('<textarea name="details" rows="3" cols="50">lorem ipsum</textarea>', $output);
+        $this->assertEquals('<div class="form-group"><textarea name="details" rows="3" cols="50" id="details" class="form-control">lorem ipsum</textarea></div>',
+            $output);
     }
 
     public function testButton()
     {
         $f = new FormBuilder();
         $output = $f->button('Send');
-        $this->assertEquals('<button type="submit">Send</button>', $output);
+        $this->assertEquals('<button type="submit" class="btn">Send</button>', $output);
     }
 
     public function testClose()
@@ -73,6 +76,14 @@ class FormBuilderTest extends PHPUnit_Framework_TestCase
         $f = new FormBuilder();
         $output = $f->close();
         $this->assertEquals('</form>', $output);
+    }
+
+    public function testSelect()
+    {
+        $f = new FormBuilder();
+        $output = $f->select('chooses', ['One', 'Two', 'Three']);
+        $this->assertEquals('<div class="form-group"><select name="chooses" id="chooses" class="form-control"><option value="0">One</option><option value="1">Two</option><option value="2">Three</option></select></div>',
+            $output);
     }
 
 }

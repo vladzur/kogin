@@ -8,7 +8,7 @@
 namespace Vladzur\Kogin;
 
 
-class FormBuilder
+class FormBuilder extends Kogin
 {
     public $div_open = '<div class="form-group">';
     public $div_close = '</div>';
@@ -62,16 +62,18 @@ class FormBuilder
             'name' => $name,
             'rows' => 3,
             'cols' => 50,
-            'id' => $name
+            'id' => $name,
+            'class' => 'form-control'
         ];
         $options = $this->mergeOptions($default, $params);
-        return "<textarea {$options}>{$text}</textarea>";
+        return "{$this->div_open}<textarea {$options}>{$text}</textarea>{$this->div_close}";
     }
 
     public function button($text = 'Submit', $params = [])
     {
         $default = [
-            'type' => 'submit'
+            'type' => 'submit',
+            'class' => 'btn'
         ];
         $options = $this->mergeOptions($default, $params);
         return "<button $options>{$text}</button>";
@@ -79,44 +81,33 @@ class FormBuilder
 
     public function checkbox($name, $text = null, $params = [])
     {
-        $out = $this->input('checkbox', $name, $params);
+        $default = [
+            'type' => 'checkbox',
+            'name' => $name,
+            'id' => $name
+        ];
+        $options = $this->mergeOptions($default, $params);
+        $input = "<input {$options}>";
         if (!isset($text)) {
             $text = $this->upperCaseName($name);
         }
-        return $out . $text;
+        return "<div class=\"checkbox\"><label>{$input}{$text}</label></div>";
     }
 
     public function select($name, $items, $params = [])
     {
         $default = [
             'name' => $name,
-            'id' => $name
+            'id' => $name,
+            'class' => 'form-control'
         ];
         $options = $this->mergeOptions($default, $params);
-        $out = "<select {$options}>";
+        $out = "{$this->div_open}<select {$options}>";
         foreach ($items as $key => $value) {
             $out .= "<option value=\"{$key}\">{$value}</option>";
         }
-        $out .= "</select>";
+        $out .= "</select>{$this->div_close}";
         return $out;
-    }
-
-    protected function mergeOptions($default, $params)
-    {
-        $options = array_merge($default, $params);
-        $form_options = [];
-        foreach ($options as $key => $value) {
-            $form_options [] = "{$key}=\"{$value}\"";
-        }
-        $string_options = implode(' ', $form_options);
-        return $string_options;
-    }
-
-    protected function upperCaseName($string)
-    {
-        $string = str_replace('_', ' ', strtolower($string));
-        $string = ucwords($string);
-        return $string;
     }
 
 }
