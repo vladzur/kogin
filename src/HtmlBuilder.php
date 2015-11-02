@@ -8,6 +8,12 @@
 namespace Vladzur\Kogin;
 
 
-class HtmlBuilder {
+class HtmlBuilder extends Kogin
+{
+    protected $output;
 
+    public function div($params = [])
+    {
+
+    }
 }
