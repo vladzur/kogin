@@ -33,8 +33,8 @@
             echo $form->select('chooses', ['One', 'Two', 'Three']);
             echo $form->textarea('body');
             echo $form->checkbox('remember_me');
-            echo $form->close();
             echo $form->button('Save', ['class' => 'btn btn-primary']);
+            echo $form->close();
             ?>
         </div>
     </div>
