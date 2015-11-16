@@ -47,9 +47,9 @@ class Kogin
      */
     protected function upperCaseName($string)
     {
-        $string = str_replace('_', ' ', strtolower($string));
-        $string = ucwords($string);
-        return $string;
+        $string_sub = str_replace('_', ' ', strtolower($string));
+        $string_up = ucwords($string_sub);
+        return $string_up;
     }
 
 }
