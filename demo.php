@@ -23,10 +23,13 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <?php
+            if (!empty($_REQUEST)) {
+                var_dump($_REQUEST);
+            }
             include_once 'vendor/autoload.php';
 
             $form = new \Vladzur\Kogin\FormBuilder();
-            echo $form->open(['action' => 'demo.php']);
+            echo $form->open(['action' => 'demo.php', 'method' => 'get']);
             echo $form->text('user_name');
             echo $form->email('email');
             echo $form->password('password');
