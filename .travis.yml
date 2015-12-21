@@ -6,4 +6,4 @@ php:
   - '7.0'
   - hhvm
   - nightly
-script: phpunit --bootstrap vendor/autoload.php test/FormBuilderTest.php
+script: phpunit test/FormBuilderTest.php --bootstrapvendor/autoload.php
