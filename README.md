@@ -1,4 +1,4 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/grade/c97f7a9a1a0e421687d528e9833f43eb)](https://www.codacy.com/app/vladzur/kogin)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/c97f7a9a1a0e421687d528e9833f43eb)](https://www.codacy.com/app/vladzur/kogin) [![Build Status](https://travis-ci.org/vladzur/kogin.svg?branch=develop)](https://travis-ci.org/vladzur/kogin)
 
 ## Kogin
 This is a FormBuilder for Botstrap 3.x and is in beta state.
