@@ -6,7 +6,5 @@ php:
   - '7.0'
   - hhvm
   - nightly
-before-script:
-  - composer install 
-  - composer dump-autoload
-script: phpunit test/FormBuilderTest.php --bootstrap vendor/autoload.php
+install: composer install
+script: phpunit --bootstrap vendor/autoload.php test/FormBuilderTest.php
